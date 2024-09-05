@@ -1,1 +1,2 @@
 # No-App-Phobia
+No-App-Phobia" refers to the fear of not having mobile apps. Our study analyzed this fear using data from Instagram, WhatsApp, Snapchat, and Facebook. The XGBoost model, achieving 90.09% accuracy, outperformed other machine learning algorithms in predicting No-App-Phobia levels (Absent, Mild, Moderate, Severe). The results facilitate identifying No-App-Phobia and suggest lifestyle adjustments based on survey predictions
