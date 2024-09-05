@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PREDICT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(45deg, #FFD5D5, #FFFBDB, #D7FFEF, #E1D5FF);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+    }
+    
+    .container {
+      max-width: 500px;
+      padding: 20px;
+      text-align: center;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      color: #777;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <center>
+      {% if data[0] == 1 %}
+      <h1> DEAR {{ name }} YOUR NO-APP-PHOBIA LEVEL IS MILD</h1>
+      <p>Kindly take care of yourselves</p>
+      {% endif%}
+
+      {% if data[0] == 2 %}
+      <h1> DEAR {{ name }} YOUR NO-APP-PHOBIA LEVEL IS MODERATE</h1>
+      <p>Kindly avoid using social apps, maybe you can use them once a week</p>
+      {% endif%}
+
+      {% if data[0] == 0 %}
+      <h1> DEAR {{ name }} YOUR NO-APP-PHOBIA LEVEL IS ABSENT</h1>
+      <p>You are perfectly alright, stay the same</p>
+      {% endif%}
+
+      {% if data[0] == 3 %}
+      <h1> DEAR {{ name }} YOUR NO-APP-PHOBIA LEVEL IS SEVERE</h1>
+      <p>Kindly consult a psychologist and take necessary measures to overcome. Spend more time with your family and friends</p>
+      {% endif%}
+      
+      <a href="/" class="btn">Go Back to Questionnaire</a>
+    </center>
+  </div>
+</body>
+</html>

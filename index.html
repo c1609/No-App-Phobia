@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Creative Questionnaire Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(45deg, #ffecd2, #fcffdb, #d2fffc, #ffd9f8);
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 500px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(45deg, #ffecd2, #fcffdb, #d2fffc, #ffd9f8);
+      background-size: 1000% 1000%;
+      animation: gradientAnimation 20s ease infinite;
+    }
+    
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #96c197;
+    }
+    
+    input[type="text"]::placeholder,
+    input[type="number"]::placeholder {
+      color: #999;
+    }
+    
+    .bubbles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    
+    .bubble {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 30px;
+      height: 30px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      pointer-events: none;
+      animation: bubbleAnimation 4s infinite;
+    }
+    
+    @keyframes bubbleAnimation {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    h1 {
+      text-align: center;
+    }
+    
+    .question {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    
+    .btn-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    input[type="submit"],
+    input[type="button"] {
+      display: block;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      width: 100%;
+      cursor: pointer;
+    }
+    
+    input[type="button"].btn {
+      background-color: #4CAF50;
+    }
+    
+    input[type="button"].btn:hover {
+      background-color: #45a049;
+    }
+    
+    @media (max-width: 600px) {
+      .container {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background">
+  <div class="container">
+    <h1>NO-APP-PHOBIA QUESTIONNAIRE</h1>
+    <form  method="POST" action="{{url_for('PhobiaPred')}}">
+      <div class="question">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      </div>
+      
+      <div class="question">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" placeholder="Enter your age" required>
+      </div>
+      
+      <div class="question">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+          <option value="">Select your gender</option>
+          <option value="2">Male</option>
+          <option value="1">Female</option>
+          <option value="3">Other</option>
+        </select>
+      </div>
+      
+      <div class="question">
+        <label for="working">Are you currently working:</label>
+        <select id="working" name="working" required>
+          <option value=""></option>
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+      </div>
+      
+      <div class="question">
+        <label for="app">What is your most frequently used app?</label>
+        <select id="app" name="app" required>
+          <option value="">Select your app</option>
+          <option value="2">Instagram</option>
+          <option value="4">Facebook</option>
+          <option value="3">Snapchat</option>
+          <option value="1">WhatsApp</option>
+        </select>
+      </div>
+      
+      <div class="question">
+        <label for="usage">How long do you use the above-mentioned app?</label>
+        <select id="usage" name="usage" required>
+          <option value="">Select usage duration</option>
+          <option value="1">Daily</option>
+          <option value="2">Monthly</option>
+          <option value="3">Yearly</option>
+        </select>
+      </div>
+      
+      <div class="question">
+        <label for="q1">If I did not have this app with me, I would be uncomfortable because I could not stay up to date with current affairs:</label>
+        <select id="q1" name="q1" required>
+          <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+      
+      <div class="question">
+        <label for="q2"> If I could not check this app for a while, I would feel a desire to check it:</label>
+        <select id="q2" name="q2" required>
+          <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+      
+      <div class="question">
+        <label for="q3"> If I did not have this app with me, I would feel awkward because I could not check my notifications for updates from my connections and online networks:</label>
+        <select id="q3" name="q3" required>
+          <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label for="q4"> If I did not have this app with me, I would feel anxious because my constant connection to my family and friends would be broken:</label>
+        <select id="q4" name="q4" required>
+          <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label for="q5">I feel uncomfortable without constant access to information through my smartphone without this app:</label>
+        <select id="q5" name="q5" required>
+          <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label for="q6">Running out of battery in my smartphone would scare me:</label>
+        <select id="q6" name="q6" required>
+          <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+      <div class="question">
+        <label for="q7">If I were to run out of monthly data limit or could not connect to WIFI, I would panic if I was not able to use this app:</label>
+        <select id="q7" name="q7" required>
+          <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+      <div class="question">
+        <label for="q8">If I did not have this app with me. I would be nervous because I would be disconnected from my online identity:</label>
+        <select id="q8" name="q8" required>
+          <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+
+      <div class="question">
+        <label for="q9">If I did not have this app with me, I would feel weird because I would not know what to do :</label>
+        <select id="q9" name="q9" required>
+          <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+      <div class="question">
+        <label for="q">If this app was to be discontinued would you feel nervous:</label>
+        <select id="q" name="q" required>
+         <option value="">Select your response</option>
+          <option value="1">Strongly Agree</option>
+          <option value="2">Agree</option>
+          <option value="3">Neutral</option>
+          <option value="4">Disagree</option>
+          <option value="5">Strongly Disagree</option>
+        </select>
+      </div>
+      <div class="btn-container">
+        <input type="submit" value="Submit" class="btn">
+      </div>
+      
+    </form>
+  </div>
+</div>
+  
+<script>
+  // Code for moving background gradient colors
+  const background = document.querySelector('.background');
+  
+  setInterval(() => {
+    background.style.backgroundPositionX = Math.floor(Math.random() * 101) + '%';
+    background.style.backgroundPositionY = Math.floor(Math.random() * 101) + '%';
+  }, 2000);
+  
+  // Code for generating bubbles
+  const bubblesContainer = document.querySelector('.bubbles');
+  const numberOfBubbles = 20;
+  
+  for (let i = 0; i < numberOfBubbles; i++) {
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+    bubble.style.animationDelay = `${Math.random() * 4}s`;
+    bubble.style.width = `${Math.floor(Math.random() * 40) + 10}px`;
+    bubble.style.height = `${Math.floor(Math.random() * 40) + 10}px`;
+    bubble.style.backgroundColor = `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.5)`;
+    
+    bubblesContainer.appendChild(bubble);
+  }
+</script>
+</body>
+</html>
